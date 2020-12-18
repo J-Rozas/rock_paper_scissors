@@ -1,6 +1,0 @@
-Create a function named "computerPlay" that randomly returns "Rock", "Paper" or "Scissors".
-Create a function that plays a single round of the game, and takes two parameters: "playerSelection" and "computerSelection" and then return a string that declares the winner of the round. (function case sensitive)
-
-/////////////////////
-
-Create a function "computerPlay" that compares "Rock", "Paper" and "Scissors" to the numbers 0, 1 and 2 and return one of those values randomly.
