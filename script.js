@@ -2,46 +2,37 @@ function computerPlay() {
     let result = Math.floor(Math.random() * 3);
     let computerSelectionName;
     if (result === 0) {
-        computerSelectionName = "rock";
+        computerSelectionName = `rock`;
     }
     else if (result === 1) {
-        computerSelectionName = "paper";
+        computerSelectionName = `paper`;
     }
     else {
-        computerSelectionName = "scissors"
+        computerSelectionName = `scissors`
     }
     console.log(`The computer selected ${computerSelectionName}.`)
-    return result;
+    return computerSelectionName;
 }
 
 function oneRound(playerSelection, computerSelection) {
-    if (playerSelection.toLowerCase() === "rock") {
-        playerSelection = 0;
-    }
-    else if (playerSelection.toLowerCase() === "paper") {
-        playerSelection = 1;
-    }
-    else if (playerSelection.toLowerCase() === "scissors") {
-        playerSelection = 2;
-    }
-    else {
-        return "Try again";
-    }
-
-    if (playerSelection === computerSelection) {
-        return "It's a tie!";
-    }
-    else if (playerSelection === 2 && computerSelection === 1 || playerSelection  === 1 && computerSelection === 0 || playerSelection === 0 && computerSelection === 2) {
-        return "You win!"
-    }
-    else {
-        return "You lose :-("
+    console.log(`You have selected ${playerSelection}.`);
+    if (playerSelection != `rock` && playerSelection != `paper` && playerSelection != `scissors`) {
+            console.log(`Please, select either rock, paper or scissors.`);
+            oneRound(prompt(`Make your selection again`).toLowerCase(), computerPlay());
+    } else {
+        if (playerSelection == `rock` && computerSelection == `scissors` || playerSelection == `scissors` && computerSelection == `paper` || playerSelection == `paper` && computerSelection == `rock`) {
+            console.log(`${playerSelection} beats ${computerSelection}; you win this round!`);
+        } else if (playerSelection === computerSelection) {
+            console.log(`It's a tie!`);
+        } else {
+            console.log(`${computerSelection} beats ${playerSelection}; the computer wins this round.`);
+        }
     }
 }    
 
 function game() {
-    for (let i=0; i<5; i++) {
-        console.log(oneRound(prompt("Make your selection"), computerPlay()));
+    for (let i = 0; i < 5; i++) {
+        oneRound(prompt(`Make your selection`).toLowerCase(), computerPlay());
     }
 }
 
